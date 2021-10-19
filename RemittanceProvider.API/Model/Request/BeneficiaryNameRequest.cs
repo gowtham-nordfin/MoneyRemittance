@@ -1,6 +1,6 @@
 ﻿namespace RemittanceProvider.API.Model.Request
 {
-    public class BeneficiaryNameRequest
+    public class BeneficiaryNameRequest : RequestBase
     {
         public string AccountNumber { get; set; }
 

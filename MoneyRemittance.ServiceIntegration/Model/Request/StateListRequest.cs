@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MoneyRemittance.ServiceIntegration.Model.Request
+﻿namespace MoneyRemittance.ServiceIntegration.Model.Request
 {
-    public class StateListRequest
+    public class StateListRequest : RequestBase
     {
+        public string Country { get; set; }
     }
 }

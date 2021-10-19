@@ -1,6 +1,8 @@
-﻿namespace MoneyRemittance.Business.Services.Remittance
+﻿using MoneyRemittance.Business.Shared;
+
+namespace MoneyRemittance.Business.Services.Remittance
 {
-    public class TransactionStatusRequest
+    public class TransactionStatusRequest : RequestBase<TransactionStatusResponse>
     {
         public string TransactionId { get; set; }
     }

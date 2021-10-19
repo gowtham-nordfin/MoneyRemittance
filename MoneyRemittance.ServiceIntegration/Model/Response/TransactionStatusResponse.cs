@@ -1,6 +1,6 @@
 ﻿namespace MoneyRemittance.ServiceIntegration.Model.Response
 {
-    public class TransactionStatusResponse
+    public class TransactionStatusResponse : ErrorResponse
     {
         public string TransactionId { get; set; }
 

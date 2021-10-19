@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using MoneyRemittance.Business.Exceptions;
 using MoneyRemittance.Business.Shared;
 using MoneyRemittance.ServiceIntegration.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,34 +14,52 @@ namespace MoneyRemittance.Business.Services.Country.Handlers
     {
         private readonly ILogger _logger;
         private ICountryService _countryService;
+        private readonly IConfiguration _configuration;
 
-        public CountriesListHandler(ILogger<CountriesListHandler> logger, ICountryService countryService)
+        public CountriesListHandler(ILogger<CountriesListHandler> logger, ICountryService countryService, IConfiguration configuration)
         {
             _logger = logger;
             _countryService = countryService;
+            _configuration = configuration;
         }
 
         public override async Task<CountryListResponse> Handle(CountryListRequest request, CancellationToken cancellationToken)
         {
-            var countryListRequest = new ServiceIntegration.Model.Request.CountryListRequest();
-
-            var countryList = await _countryService.GetCountryList(countryListRequest);
-
-            var countryListResponse = new CountryListResponse
+            try
             {
-                CountryList = new List<Model.Country>()
-            };
-
-            foreach (var item in countryList)
-            {
-                countryListResponse.CountryList.Add(new Model.Country
+                var countryListRequest = new ServiceIntegration.Model.Request.CountryListRequest
                 {
-                    Code = item.Code,
-                    Name = item.Name
-                });
-            }
+                    AccessKey = _configuration["RemittanceProviderAccessKey"]
+                };
 
-            return await Task.FromResult(countryListResponse);
+                var countryList = await _countryService.GetCountryList(countryListRequest);
+
+                if(countryList.RequestFailed)
+                {
+                    throw new BusinessException(request.CorrelationId, countryList.Error, null, countryList.ResponseCode);
+                }
+
+                var countryListResponse = new CountryListResponse
+                {
+                    CountryList = new List<Model.Country>()
+                };
+
+                foreach (var item in countryList.CountryList)
+                {
+                    countryListResponse.CountryList.Add(new Model.Country
+                    {
+                        Code = item.Code,
+                        Name = item.Name
+                    });
+                }
+
+                return await Task.FromResult(countryListResponse);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Request to fetch country list failed");
+                throw new BusinessException(request.CorrelationId, ex?.Message, null, System.Net.HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

@@ -6,6 +6,6 @@ namespace MoneyRemittance.ServiceIntegration.Interfaces
 {
     public interface IBeneficiaryService
     {
-        Task<BeneficiaryNameResponse> GetCountryList(BeneficiaryNameRequest beneficiaryNameRequest);
+        Task<BeneficiaryNameResponse> GetBeneficiaryName(BeneficiaryNameRequest beneficiaryNameRequest);
     }
 }

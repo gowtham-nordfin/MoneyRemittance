@@ -1,6 +1,8 @@
-﻿namespace MoneyRemittance.Business.Services.Remittance
+﻿using MoneyRemittance.Business.Shared;
+
+namespace MoneyRemittance.Business.Services.Remittance
 {
-    public class SubmitTransactionRequest
+    public class SubmitTransactionRequest : RequestBase<SubmitTransactionResponse>
     {
         public string SenderFirstName { get; set; }
         
@@ -42,7 +44,7 @@
         
         public string Fees { get; set; }
         
-        public string TtransactionNumber { get; set; }
+        public string TransactionNumber { get; set; }
         
         public string FromCurrency { get; set; }
     }

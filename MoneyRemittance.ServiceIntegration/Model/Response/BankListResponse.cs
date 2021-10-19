@@ -1,9 +1,9 @@
-﻿namespace MoneyRemittance.ServiceIntegration.Model.Response
-{
-    public class BankListResponse
-    {
-        public string Name { get; set; }
+﻿using System.Collections.Generic;
 
-        public string Code { get; set; }
+namespace MoneyRemittance.ServiceIntegration.Model.Response
+{
+    public class BankListResponse : ErrorResponse
+    {
+       public List<Bank> BankList { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MoneyRemittance.ServiceIntegration.Model.Response
 {
-    public class ExchangeRateResponse
+    public class ExchangeRateResponse : ErrorResponse
     {
         public string SourceCountry { get; set; }
 

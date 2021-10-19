@@ -1,6 +1,6 @@
 ﻿namespace RemittanceProvider.API.Model.Request
 {
-    public class BankListRequest
+    public class BankListRequest : RequestBase
     {
         public string Country { get; set; }
     }

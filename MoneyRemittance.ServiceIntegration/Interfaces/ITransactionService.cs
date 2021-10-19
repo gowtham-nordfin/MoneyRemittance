@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace MoneyRemittance.ServiceIntegration.Interfaces
 {
-    public interface IRemittanceService
+    public interface ITransactionService
     {
         Task<SubmitTransactionResponse> SubmitTransaction(SubmitTransactionRequest submitTransactionRequest);
 
-        Task<TransactionStatusResponse> TransactionStatus(TransctionStatusRequest transactionStatusRequest);
+        Task<TransactionStatusResponse> TransactionStatus(TransactionStatusRequest transactionStatusRequest);
     }
 }

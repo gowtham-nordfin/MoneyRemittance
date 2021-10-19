@@ -1,6 +1,6 @@
 ﻿namespace RemittanceProvider.API.Model.Request
 {
-    public class SubmitTransactionRequest
+    public class SubmitTransactionRequest : RequestBase
     {
         public string SenderFirstName { get; set; }
         

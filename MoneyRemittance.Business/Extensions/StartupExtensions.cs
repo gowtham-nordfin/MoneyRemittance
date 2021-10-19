@@ -13,7 +13,7 @@ namespace MoneyRemittance.Business.Extensions
         public static void AddBusinessLogicServiceCollection(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddMediatR(Assembly.GetExecutingAssembly());
-            serviceCollection.AddScoped<IRemittanceService, RemittanceService>();
+            serviceCollection.AddScoped<ITransactionService, TransactionService>();
             serviceCollection.AddScoped<ICountryService, CountryService>();
             serviceCollection.AddScoped<IBeneficiaryService, BeneficiaryService>();
             serviceCollection.AddServiceIntegrationServiceCollection(configuration);

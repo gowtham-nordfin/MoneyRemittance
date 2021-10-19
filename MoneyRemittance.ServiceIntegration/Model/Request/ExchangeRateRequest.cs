@@ -1,6 +1,6 @@
 ﻿namespace MoneyRemittance.ServiceIntegration.Model.Request
 {
-    public class ExchangeRateRequest
+    public class ExchangeRateRequest : RequestBase
     {
         public string From { get; set; }
 

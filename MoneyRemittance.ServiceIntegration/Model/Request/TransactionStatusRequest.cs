@@ -1,6 +1,6 @@
 ﻿namespace MoneyRemittance.ServiceIntegration.Model.Request
 {
-    public class TransctionStatusRequest
+    public class TransactionStatusRequest : RequestBase
     {
         public string TransactionId { get; set; }
     }

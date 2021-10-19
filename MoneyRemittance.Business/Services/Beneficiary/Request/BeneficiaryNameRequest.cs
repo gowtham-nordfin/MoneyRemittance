@@ -1,6 +1,8 @@
-﻿namespace MoneyRemittance.Business.Services.Beneficiary.Request
+﻿using MoneyRemittance.Business.Shared;
+
+namespace MoneyRemittance.Business.Services.Beneficiary
 {
-    public class BeneficiaryNameRequest
+    public class BeneficiaryNameRequest : RequestBase<BeneficiaryNameResponse>
     {
         public string AccountNumber { get; set; }
 

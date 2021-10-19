@@ -1,9 +1,9 @@
-﻿namespace MoneyRemittance.ServiceIntegration.Model.Response
-{
-    public class FeesListResponse
-    {
-        public double Amount { get; set; }
+﻿using System.Collections.Generic;
 
-        public double Fee { get; set; }
+namespace MoneyRemittance.ServiceIntegration.Model.Response
+{
+    public class FeesListResponse : ErrorResponse
+    {
+        public List<Fees> FeesList { get; set; }
     }
 }

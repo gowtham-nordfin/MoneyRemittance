@@ -1,10 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MoneyRemittance.Business.Services.Beneficiary;
+using System.Threading.Tasks;
 
 namespace MoneyRemittance.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/")]
     [ApiController]
-    public class BeneficiaryController : ControllerBase
+    public class BeneficiaryController : MediatingController
     {
+        private readonly ILogger<BeneficiaryController> _logger;
+
+        public BeneficiaryController(IMediator mediator, ILogger<BeneficiaryController> logger) : base(mediator)
+        {
+            _logger = logger;
+        }
+
+        [HttpPost("beneficiaryname")]
+        public async Task<IActionResult> GetBeneficiaryName([FromBody] BeneficiaryNameRequest beneficiaryNameRequest)
+        {
+            return await HandleRequestAsync<BeneficiaryNameRequest, BeneficiaryNameResponse>(beneficiaryNameRequest);
+        }
     }
 }
