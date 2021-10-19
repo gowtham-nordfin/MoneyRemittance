@@ -31,8 +31,11 @@ Mediator pattern is used to implement the remittance API service. Reasons are,
    in handler.
 
 **MoneyRemittance.API** - Project where the internal API endpoints are located.
+
 **MoneyRemittance.Business**- Project where all the handlers are located.
+
 **MoneyRemittance.ServiceIntegration** - Project which connects with the 3rd party APIs. This provides one more level of encapsulation with the rest of the application. 
+
 **RemittanceProvider.API** - My implementation of the 3rd party API.
 
 ## How to Run
