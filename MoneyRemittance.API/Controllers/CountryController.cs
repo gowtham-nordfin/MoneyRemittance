@@ -48,7 +48,7 @@ namespace MoneyRemittance.API.Controllers
             return await HandleRequestAsync<StateListRequest, StateListResponse>(stateListRequest);
         }
 
-        [HttpPost("exchangeratefees")]
+        [HttpPost("country/exchangeratefees")]
         public async Task<IActionResult> GetExchangeRateAndFees([FromBody] ExchangeRateAndFeesRequest rateAndFeesRequest)
         {
             return await HandleRequestAsync<ExchangeRateAndFeesRequest, ExchangeRateAndFeesResponse>(rateAndFeesRequest);

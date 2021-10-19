@@ -47,7 +47,7 @@ namespace MoneyRemittance.ServiceIntegration.RemittanceIntegration
                     };
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -77,7 +77,7 @@ namespace MoneyRemittance.ServiceIntegration.RemittanceIntegration
                     };
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

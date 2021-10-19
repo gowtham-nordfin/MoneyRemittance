@@ -19,8 +19,9 @@ namespace MoneyRemittance.Test
 
         public static CountryListResponse GetCountries()
         {
-            var response = new CountryListResponse();
-            response.CountryList = new List<Country>
+            var response = new CountryListResponse
+            {
+                CountryList = new List<Country>
             {
             new Country
             {
@@ -45,7 +46,8 @@ namespace MoneyRemittance.Test
                 Name = "Sweden",
                 Code = "SE"
             },
-        };
+        }
+            };
 
             return response;
         }
@@ -97,8 +99,10 @@ namespace MoneyRemittance.Test
 
         public static BankListResponse GetBanks(string country)
         {
-            var response = new BankListResponse();
-            response.BankList = new List<Bank>();
+            var response = new BankListResponse
+            {
+                BankList = new List<Bank>()
+            };
             if (country == "US")
             {
                 response.BankList.Add(new Bank

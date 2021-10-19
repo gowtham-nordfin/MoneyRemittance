@@ -20,7 +20,7 @@ namespace MoneyRemittance.Business.Extensions
                 return correlationId;
             }
 
-            return Guid.Empty;
+            return Guid.NewGuid();
         }
     }
 }

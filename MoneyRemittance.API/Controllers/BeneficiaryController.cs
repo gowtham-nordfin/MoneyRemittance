@@ -17,7 +17,7 @@ namespace MoneyRemittance.API.Controllers
             _logger = logger;
         }
 
-        [HttpPost("beneficiaryname")]
+        [HttpPost("beneficiary/name")]
         public async Task<IActionResult> GetBeneficiaryName([FromBody] BeneficiaryNameRequest beneficiaryNameRequest)
         {
             return await HandleRequestAsync<BeneficiaryNameRequest, BeneficiaryNameResponse>(beneficiaryNameRequest);
