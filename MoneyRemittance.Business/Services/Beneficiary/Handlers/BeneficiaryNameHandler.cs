@@ -51,7 +51,7 @@ namespace MoneyRemittance.Business.Services.Beneficiary.Handlers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Request to fetch beneficiary name failed");
+                _logger.LogError(ex, "Request to fetch beneficiary name failed " + request.CorrelationId);
                 throw new BusinessException(request.CorrelationId, ex?.Message, null, System.Net.HttpStatusCode.InternalServerError);
             }
         }

@@ -45,7 +45,7 @@ namespace MoneyRemittance.Business.Services.Remittance
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Request to submit the remittance transaction failed");
+                _logger.LogError(ex, "Request to submit the remittance transaction failed " + request.CorrelationId);
                 throw new BusinessException(request.CorrelationId, ex?.Message, null, System.Net.HttpStatusCode.InternalServerError);
             }
         }

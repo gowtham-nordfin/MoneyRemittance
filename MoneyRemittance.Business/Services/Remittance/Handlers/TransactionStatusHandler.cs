@@ -49,7 +49,7 @@ namespace MoneyRemittance.Business.Services.Remittance
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Request to transaction status failed");
+                _logger.LogError(ex, "Request to transaction status failed " + request.CorrelationId);
                 throw new BusinessException(request.CorrelationId, ex?.Message, null, System.Net.HttpStatusCode.InternalServerError);
             }
         }

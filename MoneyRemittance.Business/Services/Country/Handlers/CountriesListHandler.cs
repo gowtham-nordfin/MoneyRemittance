@@ -57,7 +57,7 @@ namespace MoneyRemittance.Business.Services.Country.Handlers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Request to fetch country list failed");
+                _logger.LogError(ex, "Request to fetch country list failed " + request.CorrelationId);
                 throw new BusinessException(request.CorrelationId, ex?.Message, null, System.Net.HttpStatusCode.InternalServerError);
             }
         }
